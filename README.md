@@ -1,6 +1,7 @@
 # ESP32-Sun-Tracker-with-ESP-NOW-Telemetry-Time-Sync
 _A low‑power autonomous solar node with astronomical tracking, battery monitoring, and wireless synchronization_.
 
+##############################################################################################################################
 
 __Overview__
 
@@ -20,7 +21,7 @@ This project implements a fully autonomous solar‑powered ESP32 node capable of
 - OLED display for real‑time diagnostics
 - The system is designed for outdoor, long‑term, low‑maintenance operation, powered entirely by a small solar panel and a Li‑ion battery.
 
-
+##############################################################################################################################
 
 __Architecture__
 
@@ -45,13 +46,13 @@ The project consists of two ESP32-32U boards:
 
 This ensures perfect synchronization and zero drift, even after long deep‑sleep cycles.
 
-
+##############################################################################################################################
 
 __Communication Protocol (Blocking Handshake)__
 
 The system uses a deterministic two‑phase ESP‑NOW handshake:
-SOLAR → BASE: Telemetry packet
-BASE  → SOLAR: Time + Latitude + Longitude
+- SOLAR → BASE: Telemetry packet
+- BASE  → SOLAR: Time + Latitude + Longitude
 
 The solar node does not proceed until the base responds.
 This guarantees:
@@ -60,7 +61,7 @@ This guarantees:
 - No lost packets
 - No race conditions
 
-
+##############################################################################################################################
 
 __Electronic Components__
 
@@ -142,6 +143,7 @@ Capacitors
 - INA219 supply filtering	1 µF	Recommended for stable current/voltage readings
 ```
 
+##############################################################################################################################
 
 __Software Structure__
 
@@ -162,6 +164,7 @@ telemetry.py
 tracking.py
 ```
 
+##############################################################################################################################
 
 Key Modules
 
@@ -192,7 +195,7 @@ Deep sleep helpers.
 - logging_utils.py  
 Logging option
 
-
+##############################################################################################################################
 
 __Astronomical Tracking__
 
@@ -213,7 +216,7 @@ elevation → tilt servo
 
 Elevation is clamped to 0–90° to avoid pointing below the horizon.
 
-
+##############################################################################################################################
 
 __Power Management__
 
@@ -225,7 +228,7 @@ The solar node is optimized for ultra‑low power:
 - Deep sleep between cycles (default: 10 minutes)
 - Wake‑on‑joystick interrupt
 
-
+##############################################################################################################################
 
 __Telemetry Format__
 
@@ -241,6 +244,8 @@ Example telemetry packet:
   "tilt": 45
 }
 ```
+
+##############################################################################################################################
 
 __To Do__
 
