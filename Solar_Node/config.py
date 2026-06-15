@@ -1,0 +1,32 @@
+# config.py
+
+# --- ESP-NOW ---
+PEER = b'h\tG]\x1c\x10'
+
+# --- SLEEP ---
+SLEEP_MS = 600000  # 10 minuti
+
+# --- ADC ---
+VREF = 3.3
+MAX_ADC = 4095
+
+# --- SERVO ---
+FREQ = 50
+DELAY = 0.02
+STEP = 5
+PAN_MIN = 0
+PAN_MAX = 180
+TILT_MIN = 0
+TILT_MAX = 90
+
+# --- JOYSTICK ---
+CENTER_X = 1885
+CENTER_Y = 1915
+
+# --- DISPLAY ---
+DISPLAY_WIDTH = 128
+DISPLAY_HEIGHT = 64
+
+# --- TRACKING ---
+DEFAULT_LAT = 0.0
+DEFAULT_LON = 0.0
