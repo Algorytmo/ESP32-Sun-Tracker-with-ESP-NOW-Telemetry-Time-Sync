@@ -1,6 +1,7 @@
 # ESP32-Sun-Tracker-with-ESP-NOW-Telemetry-Time-Sync
 _A low‑power autonomous solar node with astronomical tracking, battery monitoring, and wireless synchronization_.
 
+
 __Overview__
 
 This project aims to create a fully autonomous and energy‑efficient ‘smart slot’ that tries to powers or hosts any type of environmental sensor in the most sustainable way possible.
@@ -20,6 +21,7 @@ This project implements a fully autonomous solar‑powered ESP32 node capable of
 - The system is designed for outdoor, long‑term, low‑maintenance operation, powered entirely by a small solar panel and a Li‑ion battery.
 
 
+
 __Architecture__
 
 The project consists of two ESP32-32U boards:
@@ -36,22 +38,20 @@ The project consists of two ESP32-32U boards:
 
 2. Base Station (ESP32‑Base)
 - Connected to Wi‑Fi, retrieves:
-
   Geolocation (via IP‑API)
   Time (via NTP)
-  
 - Waits for telemetry
 - Sends time + lat/lon to the solar node
 
 This ensures perfect synchronization and zero drift, even after long deep‑sleep cycles.
 
 
+
 __Communication Protocol (Blocking Handshake)__
 
 The system uses a deterministic two‑phase ESP‑NOW handshake:
-
-SOLAR → BASE:   Telemetry packet
-BASE  → SOLAR:  Time + Latitude + Longitude
+SOLAR → BASE: Telemetry packet
+BASE  → SOLAR: Time + Latitude + Longitude
 
 The solar node does not proceed until the base responds.
 This guarantees:
@@ -61,9 +61,8 @@ This guarantees:
 - No race conditions
 
 
-__Electronic Components__
 
-This project uses a combination of active and passive components to build a stable, low‑power, solar‑powered ESP32 tracking system.
+__Electronic Components__
 
 Power System Components
 ```
@@ -91,6 +90,7 @@ Powers:
   5V rail monitoring
   Decoupled with a 470 µF capacitor to handle servo current peaks
 ```
+
 Control & Communication Components
 ```
 - ESP32‑WROOM‑32U (with IPEX antenna)
@@ -111,6 +111,7 @@ Measures:
   Includes 0.1 Ω shunt resistor
   Requires 1 µF supply capacitor for stable readings
 ```
+
 User Interface Components
 ```
 - Analog Joystick
@@ -124,6 +125,7 @@ Shows:
   Voltage, current, power
   Pan/tilt angles
 ```
+
 Passive Components
 ```
 Resistors
@@ -133,12 +135,13 @@ Resistors
 - INA219 shunt resistor	0.1 Ω	Provided by the INA219 module
 
 Capacitors
-- MCP1700 input capacitor	1 µF	Ceramic	Required by MCP1700 datasheet
-- MCP1700 output capacitor	1 µF	Ceramic	Required for regulator stability
-- Battery input smoothing	47 µF	Electrolytic	Stabilizes battery line during load changes
-- 5V rail servo smoothing	470 µF	Electrolytic	Prevents voltage dips when servos move
-- INA219 supply filtering	1 µF	Ceramic	Recommended for stable current/voltage readings
+- MCP1700 input capacitor	1 µF	Required by MCP1700 datasheet
+- MCP1700 output capacitor	1 µF	Required for regulator stability
+- Battery input smoothing	47 µF	Stabilizes battery line during load changes
+- 5V rail servo smoothing	470 µF	Prevents voltage dips when servos move
+- INA219 supply filtering	1 µF	Recommended for stable current/voltage readings
 ```
+
 
 __Software Structure__
 
@@ -158,6 +161,7 @@ ssd1306.py
 telemetry.py
 tracking.py
 ```
+
 
 Key Modules
 
@@ -189,6 +193,7 @@ Deep sleep helpers.
 Logging option
 
 
+
 __Astronomical Tracking__
 
 The solar node computes:
@@ -203,11 +208,11 @@ The solar node computes:
 - Elevation
 
 Then maps:
-
 azimuth → pan servo
 elevation → tilt servo
 
 Elevation is clamped to 0–90° to avoid pointing below the horizon.
+
 
 
 __Power Management__
@@ -219,6 +224,7 @@ The solar node is optimized for ultra‑low power:
 - Servo PWM deinit before sleep
 - Deep sleep between cycles (default: 10 minutes)
 - Wake‑on‑joystick interrupt
+
 
 
 __Telemetry Format__
