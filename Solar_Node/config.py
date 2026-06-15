@@ -1,7 +1,7 @@
 # config.py
 
 # --- ESP-NOW ---
-PEER = b'h\tG]\x1c\x10'
+PEER = b'YOUR_PEER_MACADDRESS_HERE'
 
 # --- SLEEP ---
 SLEEP_MS = 600000  # 10 minuti
