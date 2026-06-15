@@ -238,13 +238,18 @@ __Telemetry Format__
 Example telemetry packet:
 ```
 {
-  "ts": 1718467200,
-  "bat_v": 3.50,
-  "panel_v": 5.08,
-  "panel_i": 0.128,
-  "panel_p": 0.652,
+  "ts": 1,
+  "bat_v": 3.32337,
+  "bat_raw": 2062,
+  "v5": 4.981832,
+  "v5_raw": 3091,
+  "v33": 3.092894,
+  "v33_raw": 1919,
+  "panel_v": 3.212,
+  "panel_i": 0.0,
+  "panel_p": 0.0,
   "pan": 90,
-  "tilt": 45
+  "tilt": 90
 }
 ```
 
