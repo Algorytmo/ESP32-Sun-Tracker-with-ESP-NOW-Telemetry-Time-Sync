@@ -214,8 +214,8 @@ The solar node computes:
 - Elevation
 
 Then maps:
-azimuth → pan servo
-elevation → tilt servo
+- azimuth → pan servo
+- elevation → tilt servo
 
 Elevation is clamped to 0–90° to avoid pointing below the horizon.
 
